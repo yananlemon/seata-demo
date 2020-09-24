@@ -1,0 +1,65 @@
+
+server:
+  port: 8102
+#====================================spring 配置 =============================================
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/account-service?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: abc123
+  application:
+    name: dubbo-account-example
+
+#====================================Dubbo 配置===============================================
+dubbo:
+  application:
+    id: dubbo-account-example
+    name: dubbo-account-example
+    qosEnable: false
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20883
+  registry:
+    id: dubbo-account-example-registry
+    address: nacos://127.0.0.1:8848
+  config-center:
+    address: nacos://127.0.0.1:8848
+  metadata-report:
+    address: nacos://127.0.0.1:8848
+#====================================mybatis-plus config===============================================
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  typeAliasesPackage: site.ilemon.seata.*.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+
+##seata配置,相当于registry.conf
+seata:
+  client:
+    support:
+      spring:
+        datasource-autoproxy: false
+  tx-service-group: my_test_tx_group
+  service:
+    disable-global-transaction: false
+    grouplist:
+      default: 127.0.0.1:8091
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: DEFAULT_GROUP
+  config:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: DEFAULT_GROUP
+    type: nacos

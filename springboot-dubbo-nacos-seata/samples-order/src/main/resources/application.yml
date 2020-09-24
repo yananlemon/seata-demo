@@ -1,0 +1,64 @@
+server:
+  port: 8101
+#====================================stream =============================================
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/order-service?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: abc123
+  application:
+    name: dubbo-order-example
+
+#====================================Dubbo config===============================================
+dubbo:
+  application:
+    id: dubbo-order-example
+    name: dubbo-order-example
+    qosEnable: false
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+  registry:
+    id: dubbo-order-example-registry
+    address: nacos://127.0.0.1:8848
+  config-center:
+    address: nacos://127.0.0.1:8848
+  metadata-report:
+    address: nacos://127.0.0.1:8848
+#====================================mybatis-plus config===============================================
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  typeAliasesPackage: io.seata.samples.integration.*.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+
+##seata配置,相当于registry.conf
+seata:
+  client:
+    support:
+      spring:
+        datasource-autoproxy: false
+  tx-service-group: my_test_tx_group
+  service:
+    disable-global-transaction: false
+    grouplist:
+      default: 127.0.0.1:8091
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: DEFAULT_GROUP
+  config:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: DEFAULT_GROUP
+    type: nacos
