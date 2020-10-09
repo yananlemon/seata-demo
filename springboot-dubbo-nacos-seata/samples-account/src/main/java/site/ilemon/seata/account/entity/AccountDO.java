@@ -8,15 +8,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * <p>
- *
- * </p>
- *
- * * @author root
- * @since 2019-09-04
+ * <p>账户实体</p>
+ * @author ilemon
  */
 @Data
-public class TAccount extends Model<TAccount> {
+public class AccountDO extends Model<AccountDO> {
 
     private static final long serialVersionUID = 1L;
 

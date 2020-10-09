@@ -29,7 +29,7 @@ public class BusinessServiceImpl implements BusinessService{
     @Reference(version = "1.0.0")
     private OrderDubboService orderDubboService;
 
-    boolean flag;
+    boolean flag = false;
 
     /**
      * 处理业务逻辑 正常的业务逻辑

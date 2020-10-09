@@ -1,7 +1,5 @@
 package site.ilemon.seata.account.service;
 
-import com.baomidou.mybatisplus.service.IService;
-import site.ilemon.seata.account.entity.TAccount;
 import site.ilemon.seata.common.dto.AccountDTO;
 import site.ilemon.seata.common.response.ObjectResponse;
 
@@ -13,10 +11,12 @@ import site.ilemon.seata.common.response.ObjectResponse;
  * * @author root
  * @since 2019-09-04
  */
-public interface ITAccountService extends IService<TAccount> {
+public interface IAccountService {
 
     /**
-     * 扣用户钱
+     * 减少账户余额
+     * @param accountDTO 参考{@link AccountDTO}
+     * @return 参考 {@link ObjectResponse}
      */
     ObjectResponse decreaseAccount(AccountDTO accountDTO);
 }
