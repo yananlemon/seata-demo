@@ -1,27 +1,27 @@
 server:
-  port: 8101
+  port: 8109
 #====================================stream =============================================
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/order-service?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/storage-service?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
     username: root
     password: abc123
   application:
-    name: dubbo-order-example
+    name: dubbo-storage-example
 
 #====================================Dubbo config===============================================
 dubbo:
   application:
-    id: dubbo-order-example
-    name: dubbo-order-example
+    id: dubbo-storage-example
+    name: dubbo-storage-example
     qosEnable: false
   protocol:
     id: dubbo
     name: dubbo
-    port: 20880
+    port: 20888
   registry:
-    id: dubbo-order-example-registry
+    id: dubbo-storage-example-registry
     address: nacos://127.0.0.1:8848
   config-center:
     address: nacos://127.0.0.1:8848
@@ -54,11 +54,11 @@ seata:
       server-addr: 127.0.0.1:8848
       username: nacos
       password: nacos
-      group: A_GROUP
+      group: DEFAULT_GROUP
   config:
     nacos:
       server-addr: 127.0.0.1:8848
       username: nacos
       password: nacos
-      group: A_GROUP
+      group: DEFAULT_GROUP
     type: nacos

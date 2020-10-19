@@ -1,0 +1,48 @@
+server:
+  port: 8104
+
+spring:
+  application:
+    name: dubbo-business-example
+#====================================Dubbo config===============================================
+dubbo:
+  application:
+    id: dubbo-business-example
+    name: dubbo-business-example
+    qosEnable: false
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 10001
+  registry:
+    id: dubbo-business-example-registry
+    address: nacos://127.0.0.1:8848
+  config-center:
+    address: nacos://127.0.0.1:8848
+  metadata-report:
+    address: nacos://127.0.0.1:8848
+##seata配置,相当于registry.conf
+seata:
+  client:
+    support:
+      spring:
+        datasource-autoproxy: false
+  tx-service-group: my_test_tx_group
+  service:
+    disable-global-transaction: false
+    grouplist:
+      default: 127.0.0.1:8091
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: DEFAULT_GROUP
+  config:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos
+      group: DEFAULT_GROUP
+    type: nacos

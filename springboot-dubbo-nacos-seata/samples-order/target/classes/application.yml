@@ -54,11 +54,11 @@ seata:
       server-addr: 127.0.0.1:8848
       username: nacos
       password: nacos
-      group: A_GROUP
+      group: DEFAULT_GROUP
   config:
     nacos:
       server-addr: 127.0.0.1:8848
       username: nacos
       password: nacos
-      group: A_GROUP
+      group: DEFAULT_GROUP
     type: nacos
